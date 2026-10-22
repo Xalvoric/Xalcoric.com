@@ -39,7 +39,7 @@ Useful URL flags: `?skip` (skip the intro), `?gl=off` (static page), `?motion=of
 | Room with platform, halo, particle character and link carousel | Stepped platform and halo; an abstract particle form changes per FAQ answer (window, neural sphere, prism, discs, layers, lattice); carousel with arrows and ←/→ keys | 0.75 – 0.90 |
 | (loops back to the igloo) | Particles settle into the Xalvoric X; contact panel, form dialog, "Return to the surface" | 0.90 – 1 |
 
-How igloo.inc was studied: REA captured the live page (it renders every word inside WebGL, loads Draco meshes, KTX2 textures, MSDF fonts and Ogg audio). Its full scroll sequence came from the screen recording in `../Xalvoric/`. Only the structure and the ideas were reused. No igloo code, text, meshes, textures, audio or its particle character were copied. Every shape here is procedural or the Xalvoric mark.
+How igloo.inc was studied: REA captured the live page (it renders every word inside WebGL, loads Draco meshes, KTX2 textures, MSDF fonts and Ogg audio). Its full scroll sequence came from a screen recording of the site. Only the structure and the ideas were reused. No igloo code, text, meshes, textures, audio or its particle character were copied. Every shape here is procedural or the Xalvoric mark.
 
 ## Where to edit
 

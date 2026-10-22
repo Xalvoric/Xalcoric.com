@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-22T10:48:45.810Z",
+        "reason": "Claude: index.html has no type sizes; styles.css is imported by src/main.ts. Rendered-page detect on localhost:5179 reports no flat hierarchy (h1/h2 22-72px vs 13.5px body)."
+      }
+    ]
+  }
+}

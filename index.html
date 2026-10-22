@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Xalvoric | Websites, AI agents and product ads</title>
+    <meta
+      name="description"
+      content="Xalvoric is a digital studio for website development, AI agents and automation, and AI-assisted product ad generation."
+    />
+    <meta name="theme-color" content="#9da3ae" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Xalvoric | Websites, AI agents and product ads" />
+    <meta property="og:description" content="Website development, AI agency and ad generation, built by one studio." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #9da3ae;
+        color: #111318;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <div id="loader" class="loader" aria-hidden="true">
+      <div class="loader__inner">
+        <span class="loader__label">Xalvoric // Initialising</span>
+        <span class="loader__pct" data-pct>000</span>
+        <span class="loader__bar"><i data-bar></i></span>
+      </div>
+    </div>
+
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <svg id="hud-lines" aria-hidden="true"></svg>
+    <div id="hud-labels" aria-hidden="true"></div>
+
+    <header class="chrome">
+      <a class="brand" href="#top" aria-label="Xalvoric, back to the start">
+        <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M3 2h4.6L12 9.2 16.4 2H21l-6.6 10L21 22h-4.6L12 14.8 7.6 22H3l6.6-10z" fill="currentColor" />
+        </svg>
+        <span class="brand__word">Xalvoric</span>
+      </a>
+      <p class="chrome__meta" data-scramble>// Digital studio © 2026</p>
+      <p class="chrome__meta chrome__meta--sub" data-scramble>Xalvoric. All rights reserved.</p>
+
+      <nav class="chrome__nav" aria-label="Primary">
+        <a href="#services" data-jump="services"><span aria-hidden="true">01</span> Services</a>
+        <a href="#process" data-jump="process"><span aria-hidden="true">02</span> Process</a>
+        <a href="#faq" data-jump="faq"><span aria-hidden="true">03</span> FAQ</a>
+        <a href="#contact" data-jump="contact"><span aria-hidden="true">04</span> Contact</a>
+      </nav>
+      <button class="chrome__menu" type="button" data-open="dlg-menu" aria-haspopup="dialog">Menu</button>
+    </header>
+
+    <div class="chrome__bottom">
+      <p class="chrome__hint" data-window="hint" data-scramble>Scroll down to discover.</p>
+      <button class="sound" type="button" aria-pressed="false" data-sound>
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor" />
+          <path class="sound__wave" d="M11 5.5c1 .7 1.5 1.5 1.5 2.5s-.5 1.8-1.5 2.5" fill="none" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        Sound: <span data-sound-label>Off</span>
+      </button>
+    </div>
+
+    <div class="chrome__status" aria-hidden="true">
+      <span data-status-chapter>00 / Surface</span>
+      <span data-status-pct>000%</span>
+    </div>
+
+    <main id="main">
+      <!-- Chapter 01: the surface. The monolith stands in the snow. -->
+      <section id="top" class="ch ch--hero" data-window="hero" aria-labelledby="hero-title">
+        <div class="hero__manifesto">
+          <p class="eyebrow" data-scramble>////// Manifesto</p>
+          <h1 id="hero-title" class="hero__title">We build what moves your business.</h1>
+          <p class="hero__body">
+            Websites, AI agents and product ad creative, designed and built by one team that cares how it all fits
+            together.
+          </p>
+          <p class="hero__tags" data-scramble>Websites / AI agents / Product ads</p>
+          <div class="hero__actions">
+            <button class="btn" type="button" data-open="dlg-contact">Start a project</button>
+            <a class="btn btn--ghost" href="#services" data-jump="services">See services</a>
+          </div>
+        </div>
+        <p class="hero__corner" data-scramble>One studio for the site, the systems behind it and the ads that bring people in.</p>
+      </section>
+
+      <!-- Chapter 02: services. Three shards drift in the fog. -->
+      <section id="services" class="ch ch--services" aria-labelledby="services-title">
+        <div class="services__intro" data-window="services-intro">
+          <p class="eyebrow" data-scramble>////// Services</p>
+          <h2 id="services-title" class="title">Three ways we help a business grow.</h2>
+          <p class="lede">
+            Take one service or combine them. Each is led by the same team, so your site, your tools and your ads speak
+            with one voice.
+          </p>
+        </div>
+
+        <article id="web" class="service" data-window="service-0" data-service="0" aria-labelledby="web-title">
+          <p class="service__code" data-scramble>SVC_01 // 03</p>
+          <h3 id="web-title" class="service__name">Website development</h3>
+          <p class="service__lede">
+            Marketing sites and web apps that load quickly, read clearly and are easy for your team to keep up to date.
+          </p>
+          <ol class="service__steps" aria-label="How we work">
+            <li>01 Structure</li>
+            <li>02 Design</li>
+            <li>03 Build</li>
+          </ol>
+          <div class="service__more">
+            <h4>What’s included</h4>
+            <ul>
+              <li>Positioning, page structure and copy direction</li>
+              <li>Visual design, motion and responsive layouts</li>
+              <li>Front-end build with accessible, semantic markup</li>
+              <li>CMS or content setup, analytics and launch support</li>
+            </ul>
+            <h4>A good fit if</h4>
+            <p>You are launching, rebranding, or your current site no longer explains what you do.</p>
+          </div>
+          <button class="link-btn" type="button" data-explore="0">[ Click to explore ]</button>
+        </article>
+
+        <article id="ai" class="service" data-window="service-1" data-service="1" aria-labelledby="ai-title">
+          <p class="service__code" data-scramble>SVC_02 // 03</p>
+          <h3 id="ai-title" class="service__name">AI agency</h3>
+          <p class="service__lede">
+            We design and build AI agents and automations around the work your team already does, from first draft to
+            daily use.
+          </p>
+          <ol class="service__steps" aria-label="How we work">
+            <li>01 Map</li>
+            <li>02 Agents</li>
+            <li>03 Review</li>
+          </ol>
+          <div class="service__more">
+            <h4>What’s included</h4>
+            <ul>
+              <li>Workflow mapping to find where AI actually helps</li>
+              <li>Custom agents, assistants and internal tools</li>
+              <li>Integrations with the apps and data you already use</li>
+              <li>Guardrails, human review steps and hand-over docs</li>
+            </ul>
+            <h4>A good fit if</h4>
+            <p>Your team repeats the same research, writing, support or admin tasks every week.</p>
+          </div>
+          <button class="link-btn" type="button" data-explore="1">[ Click to explore ]</button>
+        </article>
+
+        <article id="ads" class="service" data-window="service-2" data-service="2" aria-labelledby="ads-title">
+          <p class="service__code" data-scramble>SVC_03 // 03</p>
+          <h3 id="ads-title" class="service__name">Ad generation</h3>
+          <p class="service__lede">
+            AI-assisted product imagery and short video ads, art-directed so they look like your brand and not like a
+            template.
+          </p>
+          <ol class="service__steps" aria-label="How we work">
+            <li>01 Concepts</li>
+            <li>02 Scenes</li>
+            <li>03 Variants</li>
+          </ol>
+          <div class="service__more">
+            <h4>What’s included</h4>
+            <ul>
+              <li>Creative concepts and hooks for each channel</li>
+              <li>Product stills, lifestyle scenes and motion ads</li>
+              <li>Variations sized for feeds, stories and reels</li>
+              <li>Organised asset delivery ready for your ad accounts</li>
+            </ul>
+            <h4>A good fit if</h4>
+            <p>You need more creative to test than a traditional shoot can produce.</p>
+          </div>
+          <button class="link-btn" type="button" data-explore="2">[ Click to explore ]</button>
+        </article>
+      </section>
+
+      <!-- Chapter 03: process. Four rings, one per step, on the way to the light. -->
+      <section id="process" class="ch ch--process" aria-labelledby="process-title">
+        <div class="process__intro" data-window="process-intro">
+          <p class="eyebrow" data-scramble>////// Process</p>
+          <h2 id="process-title" class="title">Clear steps, visible progress.</h2>
+        </div>
+        <ol class="process__steps">
+          <li class="step" data-window="step-0" data-step="0">
+            <p class="step__code" data-scramble>STEP_01 // 04</p>
+            <h3 class="step__name">Scope</h3>
+            <p class="step__body">
+              A conversation about the business, the audience and the outcome. We agree what success looks like before
+              anything is designed.
+            </p>
+          </li>
+          <li class="step" data-window="step-1" data-step="1">
+            <p class="step__code" data-scramble>STEP_02 // 04</p>
+            <h3 class="step__name">Shape</h3>
+            <p class="step__body">
+              Structure, direction and prototypes. You see real screens, flows or ad concepts early and steer them.
+            </p>
+          </li>
+          <li class="step" data-window="step-2" data-step="2">
+            <p class="step__code" data-scramble>STEP_03 // 04</p>
+            <h3 class="step__name">Build</h3>
+            <p class="step__body">Production work in short, visible cycles, with review points instead of a single big reveal.</p>
+          </li>
+          <li class="step" data-window="step-3" data-step="3">
+            <p class="step__code" data-scramble>STEP_04 // 04</p>
+            <h3 class="step__name">Launch and refine</h3>
+            <p class="step__body">We ship, check it works with real use, and hand over everything your team needs to run it.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Chapter 04: FAQ. A particle form above the platform changes with each question. -->
+      <section id="faq" class="ch ch--faq" data-window="faq" aria-labelledby="faq-title">
+        <div class="faq__intro">
+          <p class="eyebrow" data-scramble>////// FAQ</p>
+          <h2 id="faq-title" class="title">Questions, answered plainly.</h2>
+        </div>
+        <div class="faq__list" data-faq>
+          <article class="qa" data-short="One service">
+            <h3 class="qa__q">Can I hire you for just one service?</h3>
+            <p class="qa__a">
+              Yes. Each service stands on its own. Some clients start with a website or an ad batch and add AI work
+              later.
+            </p>
+          </article>
+          <article class="qa" data-short="AI in practice">
+            <h3 class="qa__q">What does “AI agency” mean in practice?</h3>
+            <p class="qa__a">
+              We build AI-powered tools for your business: agents that research, draft, sort or answer, and automations
+              that connect them to the software you already use. We start by finding the tasks where it is worth doing.
+            </p>
+          </article>
+          <article class="qa" data-short="Product photos">
+            <h3 class="qa__q">Do I need product photos for ad generation?</h3>
+            <p class="qa__a">
+              Clear photos of your real product give the most accurate results, so we ask for them when they exist. If
+              you do not have any yet, we will talk through the options during scoping.
+            </p>
+          </article>
+          <article class="qa" data-short="Pricing">
+            <h3 class="qa__q">How is pricing set?</h3>
+            <p class="qa__a">
+              Every project is quoted after the scoping conversation, based on what you need built. We do not publish
+              fixed packages.
+            </p>
+          </article>
+          <article class="qa" data-short="Existing site">
+            <h3 class="qa__q">Can you work on an existing website?</h3>
+            <p class="qa__a">
+              Often, yes. We review what you have first and tell you plainly whether a refresh or a rebuild makes more
+              sense.
+            </p>
+          </article>
+          <article class="qa" data-short="Your data">
+            <h3 class="qa__q">How do you handle our data in AI projects?</h3>
+            <p class="qa__a">
+              Data access, storage and which AI providers are used are agreed with you before any build starts, and
+              kept to what the project needs.
+            </p>
+          </article>
+        </div>
+        <div class="carousel" data-carousel hidden>
+          <button class="carousel__arrow" type="button" data-carousel-prev aria-label="Previous question">
+            <svg viewBox="0 0 24 8" aria-hidden="true"><path d="M24 4H1m3-3L1 4l3 3" fill="none" stroke="currentColor" /></svg>
+          </button>
+          <div class="carousel__track" aria-hidden="true">
+            <span data-carousel-side="prev"></span>
+            <span class="carousel__active" data-carousel-side="active"></span>
+            <span data-carousel-side="next"></span>
+          </div>
+          <button class="carousel__arrow" type="button" data-carousel-next aria-label="Next question">
+            <svg viewBox="0 0 24 8" aria-hidden="true"><path d="M0 4h23m-3-3 3 3-3 3" fill="none" stroke="currentColor" /></svg>
+          </button>
+          <p class="visually-hidden" aria-live="polite" data-carousel-live></p>
+        </div>
+      </section>
+
+      <!-- Chapter 05: contact. The particles settle into the mark. -->
+      <section id="contact" class="ch ch--contact" data-window="contact" aria-labelledby="contact-title">
+        <div class="contact__hud">
+          <p class="eyebrow" data-scramble>////// Next step</p>
+          <h2 id="contact-title" class="title">Bring us the problem. We will shape the build.</h2>
+          <p class="lede">
+            Tell us what you sell, who buys it and where things stall. We start every project with a scoping
+            conversation.
+          </p>
+          <div class="contact__actions">
+            <button class="btn" type="button" data-open="dlg-contact">Start a project</button>
+            <a class="btn btn--ghost" href="#top" data-jump="top">Return to the surface</a>
+          </div>
+        </div>
+        <p class="contact__foot" data-scramble>© 2026 Xalvoric // Websites / AI agents / Product ads</p>
+
+        <div class="contact__inline" data-form-home>
+          <form class="form" data-contact-form novalidate>
+            <h3 class="form__title">Start a project</h3>
+            <p class="form__intro">
+              Share a few details and what you want to achieve. The more context, the better the first conversation.
+            </p>
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required />
+              <p class="field__error" id="f-name-err"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required />
+              <p class="field__error" id="f-email-err"></p>
+            </div>
+            <div class="field">
+              <label for="f-company">Company <span class="field__opt">(optional)</span></label>
+              <input id="f-company" name="company" type="text" autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="f-service">What do you need?</label>
+              <select id="f-service" name="service">
+                <option>Website development</option>
+                <option>AI agency</option>
+                <option>Ad generation</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-message">What do you want to achieve?</label>
+              <textarea id="f-message" name="message" rows="4" required></textarea>
+              <p class="field__error" id="f-message-err"></p>
+            </div>
+            <button class="btn" type="submit">Send enquiry</button>
+            <p class="form__status" role="status" data-form-status></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="dlg-service" class="dialog" aria-labelledby="dlg-service-title">
+      <div class="dialog__frame">
+        <button class="dialog__close" type="button" data-close aria-label="Close">Close [ esc ]</button>
+        <div data-service-slot></div>
+      </div>
+    </dialog>
+
+    <dialog id="dlg-contact" class="dialog" aria-label="Start a project">
+      <div class="dialog__frame">
+        <button class="dialog__close" type="button" data-close aria-label="Close">Close [ esc ]</button>
+        <div data-form-slot></div>
+      </div>
+    </dialog>
+
+    <dialog id="dlg-menu" class="dialog dialog--menu" aria-label="Menu">
+      <div class="dialog__frame">
+        <button class="dialog__close" type="button" data-close aria-label="Close">Close [ esc ]</button>
+        <nav aria-label="Menu">
+          <a href="#services" data-jump="services"><span>01</span> Services</a>
+          <a href="#process" data-jump="process"><span>02</span> Process</a>
+          <a href="#faq" data-jump="faq"><span>03</span> FAQ</a>
+          <a href="#contact" data-jump="contact"><span>04</span> Contact</a>
+        </nav>
+      </div>
+    </dialog>
+
+    <div id="scroll-space" aria-hidden="true"></div>
+    <div class="cut" aria-hidden="true"></div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

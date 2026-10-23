@@ -1,6 +1,7 @@
 import type { Sound } from './audio'
 import { CONTACT_EMAIL, JUMPS, WINDOWS } from './config'
 import type { ScrollDriver } from './scroll'
+import { storageSet } from './util'
 
 type Opts = {
   gl: boolean
@@ -10,6 +11,7 @@ type Opts = {
   /** Current opacity of an overlay window (GL mode). */
   opacityOf?: (key: string) => number
   onFaq?: (index: number) => void
+  onTheme?: (dark: boolean) => void
 }
 
 const $ = <T extends Element = HTMLElement>(sel: string, root: ParentNode = document) => root.querySelector(sel) as T | null
@@ -149,6 +151,25 @@ export function initUI(opts: Opts) {
     soundLabel.textContent = on ? 'On' : 'Off'
   })
   for (const el of $$('a, button')) el.addEventListener('pointerenter', () => sound.blip('tick'))
+
+  // ---------- theme ----------
+  const themeBtn = $<HTMLButtonElement>('[data-theme-toggle]')!
+  const themeLabel = $('[data-theme-label]')!
+  const themeMeta = $<HTMLMetaElement>('meta[name="theme-color"]')
+  function applyTheme(dark: boolean) {
+    root.dataset.theme = dark ? 'dark' : 'light'
+    themeBtn.setAttribute('aria-pressed', String(dark))
+    themeLabel.textContent = dark ? 'Dark' : 'Bright'
+    themeMeta?.setAttribute('content', dark ? '#0f1115' : '#9da3ae')
+    opts.onTheme?.(dark)
+  }
+  applyTheme(root.dataset.theme === 'dark')
+  themeBtn.addEventListener('click', () => {
+    const dark = root.dataset.theme !== 'dark'
+    storageSet('xal-theme', dark ? 'dark' : 'light')
+    applyTheme(dark)
+    sound.blip('tick')
+  })
 
   // ---------- contact form ----------
   initForm(form)

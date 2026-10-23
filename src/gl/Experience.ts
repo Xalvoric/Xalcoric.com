@@ -196,12 +196,34 @@ export class Experience {
     this.onStage?.(s === this.surface ? 'surface' : s === this.voidStage ? 'void' : 'room')
   }
 
+  private dark = false
+
+  /** Dark theme: the same scene at night. Fog and sky sink toward near-black. */
+  setTheme(dark: boolean) {
+    this.dark = dark
+    this.renderer.toneMappingExposure = dark ? 0.72 : 0.92
+    // Dim every scene light; emissive seams, rings and halos keep glowing.
+    this.scene.traverse((o) => {
+      if (!(o instanceof THREE.Light)) return
+      o.userData.base ??= o.intensity
+      o.intensity = o.userData.base * (dark ? 0.32 : 1)
+    })
+    this.scene.environmentIntensity = dark ? 0.25 : 1
+    this.applyStageLook(this.active)
+  }
+
+  private tint(c: THREE.Color, out: THREE.Color) {
+    out.copy(c)
+    if (this.dark) out.lerp(NIGHT, 0.86)
+    return out
+  }
+
   private applyStageLook(s: Stage) {
-    this.fog.color.copy(s.fogColor)
+    this.tint(s.fogColor, this.fog.color)
     this.fog.density = s.fogDensity
-    this.skyUniforms.uTop.value.copy(s.skyTop)
-    this.skyUniforms.uBottom.value.copy(s.skyBottom)
-    this.renderer.setClearColor(s.fogColor)
+    this.tint(s.skyTop, this.skyUniforms.uTop.value)
+    this.tint(s.skyBottom, this.skyUniforms.uBottom.value)
+    this.renderer.setClearColor(this.fog.color)
   }
 
   resize() {
@@ -270,7 +292,8 @@ export class Experience {
     u.uTime.value = time
     u.uWhite.value = Math.max(whiteoutAt(p), cut) * 0.97
     // Matches the loader grey during the intro, near-white for stage cuts (display space).
-    u.uWhiteColor.value.setHex(intro < 1 ? 0x9da3ae : 0xe3e6eb, THREE.LinearSRGBColorSpace)
+    const white = this.dark ? (intro < 1 ? 0x0f1115 : 0x1b1e24) : intro < 1 ? 0x9da3ae : 0xe3e6eb
+    u.uWhiteColor.value.setHex(white, THREE.LinearSRGBColorSpace)
     if (intro < 1) u.uWhite.value = Math.max(u.uWhite.value, introFog * 0.9)
     this.post.composer.render(dt)
     this.adapt(dt, intro)
@@ -299,3 +322,4 @@ export class Experience {
 }
 
 const ZERO = new THREE.Vector2()
+const NIGHT = new THREE.Color('#05060a')

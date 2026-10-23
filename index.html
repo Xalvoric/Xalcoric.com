@@ -21,7 +21,17 @@
         background: #9da3ae;
         color: #111318;
       }
+      html[data-theme='dark'],
+      html[data-theme='dark'] body {
+        background: #0f1115;
+        color: #eef1f5;
+      }
     </style>
+    <script>
+      try {
+        if (localStorage.getItem('xal-theme') === 'dark') document.documentElement.dataset.theme = 'dark'
+      } catch {}
+    </script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -65,6 +75,13 @@
           <path class="sound__wave" d="M11 5.5c1 .7 1.5 1.5 1.5 2.5s-.5 1.8-1.5 2.5" fill="none" stroke="currentColor" stroke-width="1.2" />
         </svg>
         Sound: <span data-sound-label>Off</span>
+      </button>
+      <button class="sound" type="button" aria-pressed="false" data-theme-toggle>
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <circle cx="8" cy="8" r="5.5" fill="none" stroke="currentColor" stroke-width="1.2" />
+          <path d="M8 2.5a5.5 5.5 0 0 1 0 11z" fill="currentColor" />
+        </svg>
+        Theme: <span data-theme-label>Bright</span>
       </button>
     </div>
 

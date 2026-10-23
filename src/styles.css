@@ -30,6 +30,17 @@
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
+html[data-theme='dark'] {
+  --bg: #0f1115;
+  --bg-2: #1a1d23;
+  --ink: #eef1f5;
+  --ink-2: rgba(238, 241, 245, 0.78);
+  --rule: rgba(238, 241, 245, 0.32);
+  --paper: #111318;
+  --frost: rgba(22, 25, 31, 0.62);
+  --frost-edge: rgba(255, 255, 255, 0.08);
+}
+
 *,
 *::before,
 *::after {
@@ -479,6 +490,7 @@ html.dialog-open {
 }
 
 .hud-label {
+  --paper: #f3f5f8;
   position: absolute;
   top: 0;
   left: 0;
@@ -964,7 +976,7 @@ html.gl .contact__inline {
 .dialog .btn {
   margin-top: 26px;
   background: var(--panel-ink);
-  color: var(--ink);
+  color: #111318;
   border-color: var(--panel-ink);
 }
 
@@ -1145,7 +1157,7 @@ html.static .chrome {
   top: 0;
   z-index: 10;
   padding: 14px var(--gutter);
-  background: rgba(183, 188, 197, 0.85);
+  background: var(--frost);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--rule);
@@ -1160,7 +1172,15 @@ html.static .chrome__bottom {
   left: var(--gutter);
   bottom: var(--gutter);
   z-index: 10;
-  display: none;
+  padding: 6px 12px;
+  background: var(--frost);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+html[data-theme='dark'] .form:not(.dialog .form) {
+  --f-field: rgba(255, 255, 255, 0.06);
+  --f-error: var(--error);
 }
 
 html.static main {

@@ -84,7 +84,9 @@ async function startGL() {
     scroll,
     opacityOf: (k) => hud.opacityOf(k),
     onFaq: (i) => exp.room.setFaq(i),
+    onTheme: (dark) => exp.setTheme(dark),
   })
+  exp.setTheme(root.dataset.theme === 'dark')
   exp.onAction = (a) => {
     if (a.type === 'service') ui.openService(a.index)
   }

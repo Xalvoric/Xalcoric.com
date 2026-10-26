@@ -34,7 +34,7 @@ Useful URL flags: `?skip` (skip the intro), `?gl=off` (static page), `?motion=of
 | Wireframe network, wireframe igloo, blocks solidify | Constellation network and block blueprint draw on; graphite blocks fly in course by course; the core lights the seams | intro (time-based) |
 | Igloo of ice blocks on a snow ridge, numbered blocks, corner HUD | Monolith of graphite blocks on procedural snow; numbered blocks joined by lines; blocks push away from the cursor, click sends a ripple | 0 – 0.08 |
 | Blocks explode upward, camera climbs into cloud | Same idea: courses lift off top first, whiteout | 0.08 – 0.15 |
-| Fog void with blurred text and portfolio shards with HUD callouts | Blurred studio copy drifts past; three shards (`</>`, `AI`, `▶`) hold the services; click a shard or `[ Click to explore ]` for the full description | 0.15 – 0.47 |
+| Fog void with blurred text and portfolio shards with HUD callouts | Blurred studio copy drifts past; four shards (`</>`, `AI`, `▶`, a research icon) hold the services; click a shard or `[ Click to explore ]` for the full description | 0.15 – 0.47 |
 | Shattered ring portal into light | Four broken rings, one per process step, with leader lines; flight ends in the light | 0.47 – 0.75 |
 | Room with platform, halo, particle character and link carousel | Stepped platform and halo; an abstract particle form changes per FAQ answer (window, neural sphere, prism, discs, layers, lattice); carousel with arrows and ←/→ keys | 0.75 – 0.90 |
 | (loops back to the igloo) | Particles settle into the Xalvoric X; contact panel, form dialog, "Return to the surface" | 0.90 – 1 |

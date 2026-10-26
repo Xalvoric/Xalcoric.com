@@ -5,17 +5,17 @@ import { mulberry32, smoothstep } from '../util'
 import { pullBack, sampleKeys, type CamKey } from './keys'
 import { createNoise3D } from './noise'
 import { anchor, toScreen, type FrameCtx, type Stage, type StageAction } from './stage'
-import { glyphTexture, radialTexture, textTexture } from './textures'
+import { glyphTexture, radialTexture, RESEARCH_ICON, textTexture } from './textures'
 
 // Chapters 02 and 03: a fog void above the cloud line. Three shards hold the
 // services; past them, four broken rings (one per process step) lead into a
 // light that whites out into the room.
 
-const SHARD_Z = [-14, -34, -54]
-const SHARD_SIDE = [1, -1, 1]
-const SHARD_GLYPHS = ['</>', 'AI', '▶']
-const RING_Z = [-80, -96, -112, -128]
-const GLOW_Z = -150
+const SHARD_Z = [-14, -34, -54, -74]
+const SHARD_SIDE = [1, -1, 1, -1]
+const SHARD_GLYPHS = ['</>', 'AI', '▶', RESEARCH_ICON]
+const RING_Z = [-100, -116, -132, -148]
+const GLOW_Z = -170
 
 /** Background words for the blurred text drift, all from the studio's own copy. */
 const DRIFT_WORDS = [
@@ -29,6 +29,7 @@ const DRIFT_WORDS = [
   'SVC_01 // WEBSITE DEVELOPMENT',
   'SVC_02 // AI AGENCY',
   'SVC_03 // AD GENERATION',
+  'SVC_04 // RESEARCH',
   'WE BUILD WHAT MOVES YOUR BUSINESS',
   'STATUS: SCOPING // OPEN',
 ]
@@ -45,7 +46,7 @@ function camKeys(portrait: boolean): CamKey[] {
     keys.push({ t: f - 0.024, pos: [0, 0.35, z + 8.4], look: [lx, 0, z] })
     keys.push({ t: f + 0.024, pos: [0, 0.25, z + 7.2], look: [lx, 0, z] })
   })
-  keys.push({ t: 0.475, pos: [0, 0.4, -62], look: [0, 0, -92] })
+  keys.push({ t: 0.495, pos: [0, 0.4, -82], look: [0, 0, -112] })
   T.rings.forEach((r, i) => {
     keys.push({ t: r, pos: [0, 0, RING_Z[i] + 0.5], look: [0, 0, RING_Z[i] - 24], roll: (i + 1) * 0.45, ease: 'lin' })
   })
@@ -108,7 +109,7 @@ export class VoidStage implements Stage {
       const mesh = new THREE.Mesh(new THREE.PlaneGeometry(h * aspect, h), mat)
       const a = rand() * Math.PI * 2
       const r = 9 + rand() * 13
-      const z = 14 - rand() * 150
+      const z = 14 - rand() * 170
       mesh.position.set(Math.cos(a) * r, Math.sin(a) * r * 0.55 + (rand() - 0.5) * 3, z)
       mesh.lookAt(0, mesh.position.y * 0.6, z + 6)
       this.group.add(mesh)
@@ -298,7 +299,7 @@ export class VoidStage implements Stage {
     this.rings.forEach((r, i) => {
       r.rotation.z = time * (i % 2 ? -0.05 : 0.07) + i
     })
-    const approach = smoothstep(0.47, T.portalEnd, p)
+    const approach = smoothstep(0.495, T.portalEnd, p)
     this.glowLight.intensity = 140 * approach
     this.glow.scale.setScalar(0.5 + approach * 0.7)
   }

@@ -647,7 +647,8 @@ html.gl main .service {
   width: min(420px, 36vw);
 }
 
-html.gl main .service[data-service='1'] {
+html.gl main .service[data-service='1'],
+html.gl main .service[data-service='3'] {
   left: auto;
   right: var(--gutter);
 }
@@ -1217,7 +1218,7 @@ html.static .hero__corner {
 
 html.static .ch--services {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
 
@@ -1309,6 +1310,7 @@ html.static .contact__foot {
   }
 
   html.gl main .service[data-service='1'],
+  html.gl main .service[data-service='3'],
   html.gl .step[data-step='1'],
   html.gl .step[data-step='3'] {
     left: var(--gutter);

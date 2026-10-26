@@ -9,15 +9,53 @@
  */
 export const CONTACT_EMAIL = ''
 
+/**
+ * Scroll pacing. The timeline below is in progress units `p`; PACE stretches
+ * parts of it on the page so a stretch gets more scroll distance without
+ * retiming everything after it. Each crystal keeps the same screen time.
+ */
+const BASE_VH = 1550
+const PACE: { to: number; stretch: number }[] = [
+  { to: 0.214, stretch: 1 },
+  { to: 0.49, stretch: 1.25 },
+  { to: 1, stretch: 1 },
+]
+const SEG_VH = PACE.map((s, i) => (s.to - (i ? PACE[i - 1].to : 0)) * BASE_VH * s.stretch)
+
 /** Total scroll length of the experience, in viewport heights. */
-export const SCROLL_VH = 1550
+export const SCROLL_VH = SEG_VH.reduce((a, b) => a + b, 0)
+
+/** Page scroll fraction (0..1) to timeline progress. */
+export function toTimeline(u: number) {
+  let vh = u * SCROLL_VH
+  let from = 0
+  for (let i = 0; i < PACE.length; i++) {
+    if (vh <= SEG_VH[i] || i === PACE.length - 1) return Math.min(1, from + (vh / SEG_VH[i]) * (PACE[i].to - from))
+    vh -= SEG_VH[i]
+    from = PACE[i].to
+  }
+  return 1
+}
+
+/** Timeline progress to page scroll fraction (inverse of toTimeline). */
+export function toScroll(p: number) {
+  let vh = 0
+  let from = 0
+  for (let i = 0; i < PACE.length; i++) {
+    const span = PACE[i].to - from
+    if (p <= PACE[i].to || i === PACE.length - 1) return (vh + (Math.max(0, p - from) / span) * SEG_VH[i]) / SCROLL_VH
+    vh += SEG_VH[i]
+    from = PACE[i].to
+  }
+  return 1
+}
 
 export const T = {
   /** Surface: monolith hero, then the blocks lift away and the camera climbs into cloud. */
   heroEnd: 0.08,
   surfaceEnd: 0.15,
-  /** Services: four shards in the fog. Camera holds on each at these points. */
-  shards: [0.25, 0.32, 0.39, 0.46],
+  /** Services: five shards in the fog. Camera holds on each at these points. */
+  shards: [0.24, 0.296, 0.352, 0.408, 0.464],
   /** Process: the camera passes through one ring per step at these points. */
   rings: [0.56, 0.61, 0.66, 0.71],
   /** The light at the end of the rings; the room starts behind it. */
@@ -40,10 +78,11 @@ export const WINDOWS: Record<string, [number, number, number, number]> = {
   hero: [-1, 0, 0.045, 0.075],
   hint: [-1, 0, 0.015, 0.04],
   'services-intro': [0.165, 0.178, 0.2, 0.213],
-  'service-0': [0.22, 0.233, 0.267, 0.28],
-  'service-1': [0.29, 0.303, 0.337, 0.35],
-  'service-2': [0.36, 0.373, 0.407, 0.42],
-  'service-3': [0.43, 0.443, 0.477, 0.49],
+  'service-0': [0.216, 0.2265, 0.2535, 0.264],
+  'service-1': [0.272, 0.2825, 0.3095, 0.32],
+  'service-2': [0.328, 0.3385, 0.3655, 0.376],
+  'service-3': [0.384, 0.3945, 0.4215, 0.432],
+  'service-4': [0.44, 0.4505, 0.4775, 0.488],
   'process-intro': [0.495, 0.505, 0.518, 0.528],
   'step-0': [0.52, 0.53, 0.548, 0.556],
   'step-1': [0.57, 0.58, 0.598, 0.606],

@@ -125,6 +125,45 @@ function drawResearchIcon(ctx: CanvasRenderingContext2D, size: number) {
   ctx.stroke()
 }
 
+/** Glyph key for the video shard. */
+export const VIDEO_ICON = 'icon:video'
+
+/** Film strip cut on a diagonal: two strip pieces, sprocket holes, a dashed cut line. */
+function drawVideoIcon(ctx: CanvasRenderingContext2D, size: number) {
+  const u = size / 256
+  ctx.strokeStyle = '#fff'
+  ctx.fillStyle = '#fff'
+  ctx.lineWidth = 13 * u
+  ctx.lineCap = 'round'
+  ctx.lineJoin = 'round'
+  ctx.strokeRect(52 * u, 76 * u, 152 * u, 104 * u)
+  ctx.beginPath()
+  ctx.moveTo(52 * u, 106 * u)
+  ctx.lineTo(204 * u, 106 * u)
+  ctx.moveTo(52 * u, 150 * u)
+  ctx.lineTo(204 * u, 150 * u)
+  ctx.stroke()
+  for (const x of [70, 98, 126, 154, 182]) {
+    ctx.fillRect((x - 5) * u, 86 * u, 10 * u, 10 * u)
+    ctx.fillRect((x - 5) * u, 160 * u, 10 * u, 10 * u)
+  }
+  // Cut the strip along a diagonal, then mark the cut.
+  ctx.save()
+  ctx.globalCompositeOperation = 'destination-out'
+  ctx.lineWidth = 30 * u
+  ctx.beginPath()
+  ctx.moveTo(158 * u, 52 * u)
+  ctx.lineTo(98 * u, 204 * u)
+  ctx.stroke()
+  ctx.restore()
+  ctx.setLineDash([14 * u, 12 * u])
+  ctx.beginPath()
+  ctx.moveTo(170 * u, 40 * u)
+  ctx.lineTo(86 * u, 216 * u)
+  ctx.stroke()
+  ctx.setLineDash([])
+}
+
 /** A large glyph drawn into a square canvas, engraved onto the service shards. */
 export function glyphTexture(glyph: string, size = 256) {
   const { c, ctx } = canvas(size, size)
@@ -133,6 +172,7 @@ export function glyphTexture(glyph: string, size = 256) {
   ctx.textBaseline = 'middle'
   ctx.font = `800 ${Math.round(size * 0.42)}px Unbounded, "IBM Plex Mono", sans-serif`
   if (glyph === RESEARCH_ICON) drawResearchIcon(ctx, size)
+  else if (glyph === VIDEO_ICON) drawVideoIcon(ctx, size)
   else ctx.fillText(glyph, size / 2, size / 2 + size * 0.02)
   ctx.strokeStyle = 'rgba(255,255,255,0.7)'
   ctx.lineWidth = 2

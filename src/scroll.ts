@@ -1,4 +1,4 @@
-import { SCROLL_VH } from './config'
+import { SCROLL_VH, toScroll, toTimeline } from './config'
 import { clamp, damp } from './util'
 
 // Native page scroll drives the experience: no scroll hijacking, so wheel,
@@ -24,7 +24,7 @@ export class ScrollDriver {
       if (window.innerWidth === lastW) return
       lastW = window.innerWidth
       const keep = this.target
-      requestAnimationFrame(() => window.scrollTo(0, keep * this.max))
+      requestAnimationFrame(() => window.scrollTo(0, toScroll(keep) * this.max))
     })
     this.read()
   }
@@ -34,12 +34,12 @@ export class ScrollDriver {
   }
 
   private read = () => {
-    this.target = clamp(window.scrollY / this.max)
+    this.target = toTimeline(clamp(window.scrollY / this.max))
   }
 
   /** Long jumps fade to fog, cut, and fade back instead of rushing through every stage. */
   jumpTo(p: number, reduced = false) {
-    const y = p * this.max
+    const y = toScroll(p) * this.max
     if (reduced || Math.abs(p - this.current) < 0.06) {
       window.scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' })
       return
